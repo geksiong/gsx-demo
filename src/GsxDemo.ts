@@ -7,6 +7,11 @@ export class GsxDemo extends LitElement {
       padding: 25px;
       color: var(--gsx-demo-text-color, #000);
     }
+    .embeddedDiv {
+      background: #ffc;
+      padding: 10px;
+      border: 1px solid #333;
+    }
   `;
 
   @property({type: String}) title = 'Hey there';
@@ -17,10 +22,15 @@ export class GsxDemo extends LitElement {
     this.counter += 1;
   }
 
+  myTemplate = html`
+    <div class="embeddedDiv">This is a lit-html template</div>
+  `
+
   render() {
     return html`
       <h2>${this.title} Nr. ${this.counter}!</h2>
       <button @click=${this.__increment}>increment</button>
+      ${this.myTemplate}
     `;
   }
 }
